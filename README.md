@@ -1,6 +1,6 @@
 # mobile-client-json
 
-[1]: <https://github.com/BridgeDigitalHealth/AssessmentModelKMM> "AssessmentModelKMM"
+[1]: <https://github.com/BiAffectBridge/AssessmentModel-Swift> "AssessmentModel-Swift"
 [2]: <https://www.figma.com/file/edCHqzwDQLgnBUXj7KoNl3/Surveys_ResearcherUI> "Surveys_ResearcherUI"
 [3]: <https://developer.sagebridge.org/model-browser.html#AssessmentConfig> "AssessmentConfig"
 
@@ -28,7 +28,7 @@ archive.
 - [Json Schema](/schemas/v2/ArchiveMetadata.json)
 - [Markdown Schema](/docs/v2/ArchiveMetadata.md)
 
-### Primary Assessment Result
+### Primary Result
 
 Both Android and iOS support archives that include multiple files. This is done to 
 support background recorders, large JSON files, and data that is not JSON-formatted 
@@ -36,14 +36,21 @@ such as MP4 and JPEG. Typically, the archive will also include the primary resul
 file which is a JSON file in the schema defined by the researchers who developed the
 assessment. 
 
-| Developer        | File Name               | 
-|------------------|-------------------------|
-| Sage Bionetworks | "assessmentResult.json" |
-| DIAN (Arc)       | "data.json"             |
+| Assessment Type  | File Name               | Json Schema                                                         |
+|------------------|-------------------------|---------------------------------------------------------------------|
+| Surveys          | "assessmentResult.json" | [AssessmentResultObject](/schemas/v4/AssessmentResultObject.json)   |
+| Go-No-Go         | "gonogo.json"           | [GoNoGoResultObject](/schemas/v4/GoNoGoResultObject.json)           |
+| Trailmaking      | "trailmaking.json"      | [TrailmakingResultObject](/schemas/v4/TrailmakingResultObject.json) |
+| Keyboard Session | "keyboardSession.json"  | [KeyboardSession](/schemas/v4/KeyboardSession.json)                 |
 
-#### Sage Bionetworks Assessment Categories
- - Surveys: Built using the Researcher UI and available to all apps
- - Motor Control: Commonly referred to as "tapping", "tremor", and "walk & balance"
+### Secondary Results
+
+If available, the archive may also include other result files:
+
+| Record Type        | File Name     | Json Schema                                   |
+|--------------------|---------------|-----------------------------------------------|
+| Motion Sensor Data | "motion.json" | [MotionRecord](/schemas/v4/MotionRecord.json) |
+
  
 ## Building a Survey
 
