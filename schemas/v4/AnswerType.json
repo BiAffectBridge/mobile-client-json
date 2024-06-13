@@ -1,0 +1,366 @@
+{
+  "$id" : "https://biaffectbridge.github.io/mobile-client-json/schemas/v4/AnswerType.json",
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "title" : "AnswerType",
+  "description" : "`AnswerType` is used to allow carrying additional information about the properties of a JSON-encoded `AnswerResult`.",
+  "definitions" : {
+    "AnswerTypeArray" : {
+      "$id" : "#AnswerTypeArray",
+      "type" : "object",
+      "title" : "AnswerTypeArray",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "array"
+        },
+        "baseType" : {
+          "$ref" : "#/definitions/JsonType",
+          "description" : "The base type of the array."
+        },
+        "sequenceSeparator" : {
+          "type" : "string",
+          "description" : "The sequence separator to use for arrays that should be encoded as strings."
+        }
+      },
+      "required" : [
+        "type",
+        "baseType"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "array",
+          "baseType" : "number"
+        },
+        {
+          "type" : "array",
+          "baseType" : "integer"
+        },
+        {
+          "type" : "array",
+          "baseType" : "string"
+        }
+      ]
+    },
+    "AnswerTypeBoolean" : {
+      "$id" : "#AnswerTypeBoolean",
+      "type" : "object",
+      "title" : "AnswerTypeBoolean",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "boolean"
+        }
+      },
+      "required" : [
+        "type"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "boolean"
+        }
+      ]
+    },
+    "AnswerTypeDateTime" : {
+      "$id" : "#AnswerTypeDateTime",
+      "type" : "object",
+      "title" : "AnswerTypeDateTime",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "date-time"
+        },
+        "codingFormat" : {
+          "type" : "string",
+          "description" : "The iso8601 format for the date-time components used by this answer type."
+        }
+      },
+      "required" : [
+        "type"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "date-time",
+          "codingFormat" : "yyyy-MM"
+        },
+        {
+          "type" : "date-time",
+          "codingFormat" : "HH:mm"
+        },
+        {
+          "type" : "date-time",
+          "codingFormat" : "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+        }
+      ]
+    },
+    "AnswerTypeDuration" : {
+      "$id" : "#AnswerTypeDuration",
+      "type" : "object",
+      "title" : "AnswerTypeDuration",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "duration"
+        },
+        "displayUnits" : {
+          "type" : "array",
+          "description" : "The units used to display the duration as a question.",
+          "items" : {
+            "$ref" : "#/definitions/DurationUnit"
+          }
+        },
+        "significantDigits" : {
+          "type" : "number",
+          "description" : "The number of significant digits to use in encoding the answer."
+        }
+      },
+      "required" : [
+        "type"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "duration",
+          "displayUnits" : [
+            "hour",
+            "minute"
+          ],
+          "significantDigits" : 0
+        }
+      ]
+    },
+    "AnswerTypeInteger" : {
+      "$id" : "#AnswerTypeInteger",
+      "type" : "object",
+      "title" : "AnswerTypeInteger",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "integer"
+        }
+      },
+      "required" : [
+        "type"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "integer"
+        }
+      ]
+    },
+    "AnswerTypeMeasurement" : {
+      "$id" : "#AnswerTypeMeasurement",
+      "type" : "object",
+      "title" : "AnswerTypeMeasurement",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "measurement"
+        },
+        "unit" : {
+          "type" : "string",
+          "description" : "The unit of measurement into which the value is converted for storage."
+        },
+        "significantDigits" : {
+          "type" : "number",
+          "description" : "The number of significant digits to use in encoding the answer."
+        }
+      },
+      "required" : [
+        "type"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "measurement",
+          "unit" : "cm"
+        }
+      ]
+    },
+    "AnswerTypeNumber" : {
+      "$id" : "#AnswerTypeNumber",
+      "type" : "object",
+      "title" : "AnswerTypeNumber",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "number"
+        },
+        "significantDigits" : {
+          "type" : "number",
+          "description" : "The number of significant digits to use in encoding the answer."
+        }
+      },
+      "required" : [
+        "type"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "number"
+        }
+      ]
+    },
+    "AnswerTypeObject" : {
+      "$id" : "#AnswerTypeObject",
+      "type" : "object",
+      "title" : "AnswerTypeObject",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "object"
+        }
+      },
+      "required" : [
+        "type"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "object"
+        }
+      ]
+    },
+    "AnswerTypeString" : {
+      "$id" : "#AnswerTypeString",
+      "type" : "object",
+      "title" : "AnswerTypeString",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "string"
+        }
+      },
+      "required" : [
+        "type"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "string"
+        }
+      ]
+    },
+    "AnswerTypeTime" : {
+      "$id" : "#AnswerTypeTime",
+      "type" : "object",
+      "title" : "AnswerTypeTime",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "time"
+        },
+        "codingFormat" : {
+          "type" : "string",
+          "description" : "The iso8601 format for the time components used by this answer type."
+        }
+      },
+      "required" : [
+        "type"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "time",
+          "codingFormat" : "HH:mm:ss.SSS"
+        }
+      ]
+    },
+    "AnswerTypeType" : {
+      "$id" : "#AnswerTypeType",
+      "type" : "string",
+      "title" : "AnswerTypeType",
+      "description" : "",
+      "examples" : [
+        "measurement",
+        "date-time",
+        "time",
+        "duration",
+        "array",
+        "boolean",
+        "integer",
+        "number",
+        "object",
+        "string"
+      ]
+    },
+    "DurationUnit" : {
+      "$id" : "#DurationUnit",
+      "type" : "string",
+      "title" : "DurationUnit",
+      "description" : "",
+      "enum" : [
+        "hour",
+        "minute",
+        "second"
+      ]
+    },
+    "JsonType" : {
+      "$id" : "#JsonType",
+      "type" : "string",
+      "title" : "JsonType",
+      "description" : "",
+      "enum" : [
+        "string",
+        "number",
+        "integer",
+        "boolean",
+        "null",
+        "array",
+        "object"
+      ]
+    }
+  },
+  "properties" : {
+    "type" : {
+      "$ref" : "#/definitions/AnswerTypeType"
+    }
+  },
+  "required" : [
+    "type"
+  ]
+}

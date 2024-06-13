@@ -12,12 +12,8 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/Sage-Bionetworks/AssessmentModelKMM.git",
-                 from: "0.11.0"),
-        .package(url: "https://github.com/Sage-Bionetworks/JsonModel-Swift.git",
-                 from: "2.2.2"),
-        .package(url: "https://github.com/Sage-Bionetworks/MotorControl-iOS.git",
-                 from: "5.0.0"),
+        .package(path: "../../Keyboard-for-BiAffect-Swift"),
+        .package(path: "../../BiAffectSDK"),
     ],
     targets: [
         
@@ -26,9 +22,8 @@ let package = Package(
         .executableTarget(
             name: "generator",
             dependencies: [
-                .product(name: "AssessmentModel", package: "AssessmentModelKMM"),
-                .product(name: "JsonModel", package: "JsonModel-Swift"),
-                .product(name: "MotorControl", package: "MotorControl-iOS"),
+                .product(name: "KeyLogger", package: "Keyboard-for-BiAffect-Swift"),
+                .product(name: "BiAffectSDK", package: "BiAffectSDK"),
             ]),
         .testTarget(
             name: "generatorTests",

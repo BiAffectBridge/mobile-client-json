@@ -1,0 +1,736 @@
+{
+  "$id" : "https://biaffectbridge.github.io/mobile-client-json/schemas/v4/ResultData.json",
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "title" : "ResultData",
+  "description" : "The interface for any `ResultData` that is serialized using the `Codable` protocol and the polymorphic serialization defined by this framework.",
+  "definitions" : {
+    "AnswerResultObject" : {
+      "$id" : "#AnswerResultObject",
+      "type" : "object",
+      "title" : "AnswerResultObject",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "answer"
+        },
+        "answerType" : {
+          "$ref" : "AnswerType.json",
+          "description" : "Optional property for defining additional information about the answer expected for this result."
+        },
+        "value" : {
+          "description" : "The answer held by this result."
+        },
+        "questionText" : {
+          "type" : "string",
+          "description" : "The question text that was displayed for this answer result."
+        },
+        "questionData" : {
+          "description" : "Additional data that researchers may wish to include with an answer result."
+        }
+      },
+      "required" : [
+        "type"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "answer",
+          "identifier" : "question1",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:28:09.000-07:00",
+          "answerType" : {
+            "type" : "boolean"
+          },
+          "value" : true
+        },
+        {
+          "type" : "answer",
+          "identifier" : "question2",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:28:09.000-07:00",
+          "answerType" : {
+            "type" : "integer"
+          },
+          "value" : 42
+        },
+        {
+          "type" : "answer",
+          "identifier" : "question3",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:28:09.000-07:00",
+          "answerType" : {
+            "type" : "number"
+          },
+          "value" : 3.14
+        },
+        {
+          "type" : "answer",
+          "identifier" : "question4",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:28:09.000-07:00",
+          "answerType" : {
+            "type" : "object"
+          },
+          "value" : {
+            "foo" : "ba"
+          }
+        },
+        {
+          "type" : "answer",
+          "identifier" : "question5",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:28:09.000-07:00",
+          "answerType" : {
+            "type" : "string"
+          },
+          "value" : "foo"
+        },
+        {
+          "type" : "answer",
+          "identifier" : "question6",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:28:09.000-07:00",
+          "answerType" : {
+            "baseType" : "number",
+            "type" : "array"
+          },
+          "value" : [
+            3.2,
+            5.1
+          ]
+        },
+        {
+          "type" : "answer",
+          "identifier" : "question7",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:28:09.000-07:00",
+          "answerType" : {
+            "baseType" : "integer",
+            "type" : "array"
+          },
+          "value" : [
+            1,
+            5
+          ]
+        },
+        {
+          "type" : "answer",
+          "identifier" : "question8",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:28:09.000-07:00",
+          "answerType" : {
+            "baseType" : "string",
+            "type" : "array"
+          },
+          "value" : [
+            "foo",
+            "ba",
+            "lalala"
+          ]
+        },
+        {
+          "type" : "answer",
+          "identifier" : "question9",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:28:09.000-07:00",
+          "answerType" : {
+            "codingFormat" : "yyyy-MM",
+            "type" : "date-time"
+          },
+          "value" : "2020-04"
+        },
+        {
+          "type" : "answer",
+          "identifier" : "question10",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:28:09.000-07:00",
+          "answerType" : {
+            "codingFormat" : "HH:mm",
+            "type" : "date-time"
+          },
+          "value" : "08:30"
+        },
+        {
+          "type" : "answer",
+          "identifier" : "question11",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:28:09.000-07:00",
+          "answerType" : {
+            "codingFormat" : "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ",
+            "type" : "date-time"
+          },
+          "value" : "2017-10-16T22:28:09.000-07:00"
+        },
+        {
+          "type" : "answer",
+          "identifier" : "question12",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:28:09.000-07:00",
+          "answerType" : {
+            "codingFormat" : "HH:mm:ss.SSS",
+            "type" : "time"
+          },
+          "value" : "22:28:00.000"
+        },
+        {
+          "type" : "answer",
+          "identifier" : "question13",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:28:09.000-07:00",
+          "answerType" : {
+            "displayUnits" : [
+              "hour",
+              "minute"
+            ],
+            "significantDigits" : 0,
+            "type" : "duration"
+          },
+          "value" : 75
+        },
+        {
+          "type" : "answer",
+          "identifier" : "question14",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:28:09.000-07:00",
+          "answerType" : {
+            "type" : "measurement",
+            "unit" : "cm"
+          },
+          "value" : 170.2
+        }
+      ]
+    },
+    "BranchNodeResultObject" : {
+      "$id" : "#BranchNodeResultObject",
+      "type" : "object",
+      "title" : "BranchNodeResultObject",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "section"
+        },
+        "stepHistory" : {
+          "type" : "array",
+          "description" : "The ``stepHistory`` includes the history of the node results that were traversed as a part of running an assessment.",
+          "items" : {
+            "$ref" : "#"
+          }
+        },
+        "asyncResults" : {
+          "type" : "array",
+          "description" : "A list of all the asynchronous results for this task. The list should include uniquely identified results.",
+          "items" : {
+            "$ref" : "#"
+          }
+        },
+        "path" : {
+          "type" : "array",
+          "description" : "The path traversed by this branch.",
+          "items" : {
+            "$ref" : "AssessmentResultObject.json#PathMarker"
+          }
+        }
+      },
+      "required" : [
+        "type",
+        "stepHistory"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "section",
+          "identifier" : "example",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:30:49.000-07:00",
+          "stepHistory" : [
+            {
+              "endDate" : "2017-10-16T22:28:29.000-07:00",
+              "identifier" : "introduction",
+              "startDate" : "2017-10-16T22:28:09.000-07:00",
+              "type" : "base"
+            },
+            {
+              "children" : [
+                {
+                  "answerType" : {
+                    "type" : "boolean"
+                  },
+                  "endDate" : "2017-10-16T22:28:09.000-07:00",
+                  "identifier" : "question1",
+                  "startDate" : "2017-10-16T22:28:09.000-07:00",
+                  "type" : "answer",
+                  "value" : true
+                },
+                {
+                  "answerType" : {
+                    "type" : "integer"
+                  },
+                  "endDate" : "2017-10-16T22:28:09.000-07:00",
+                  "identifier" : "question2",
+                  "startDate" : "2017-10-16T22:28:09.000-07:00",
+                  "type" : "answer",
+                  "value" : 42
+                },
+                {
+                  "answerType" : {
+                    "type" : "number"
+                  },
+                  "endDate" : "2017-10-16T22:28:09.000-07:00",
+                  "identifier" : "question3",
+                  "startDate" : "2017-10-16T22:28:09.000-07:00",
+                  "type" : "answer",
+                  "value" : 3.14
+                },
+                {
+                  "answerType" : {
+                    "type" : "object"
+                  },
+                  "endDate" : "2017-10-16T22:28:09.000-07:00",
+                  "identifier" : "question4",
+                  "startDate" : "2017-10-16T22:28:09.000-07:00",
+                  "type" : "answer",
+                  "value" : {
+                    "foo" : "ba"
+                  }
+                },
+                {
+                  "answerType" : {
+                    "type" : "string"
+                  },
+                  "endDate" : "2017-10-16T22:28:09.000-07:00",
+                  "identifier" : "question5",
+                  "startDate" : "2017-10-16T22:28:09.000-07:00",
+                  "type" : "answer",
+                  "value" : "foo"
+                },
+                {
+                  "answerType" : {
+                    "baseType" : "number",
+                    "type" : "array"
+                  },
+                  "endDate" : "2017-10-16T22:28:09.000-07:00",
+                  "identifier" : "question6",
+                  "startDate" : "2017-10-16T22:28:09.000-07:00",
+                  "type" : "answer",
+                  "value" : [
+                    3.2,
+                    5.1
+                  ]
+                },
+                {
+                  "answerType" : {
+                    "baseType" : "integer",
+                    "type" : "array"
+                  },
+                  "endDate" : "2017-10-16T22:28:09.000-07:00",
+                  "identifier" : "question7",
+                  "startDate" : "2017-10-16T22:28:09.000-07:00",
+                  "type" : "answer",
+                  "value" : [
+                    1,
+                    5
+                  ]
+                },
+                {
+                  "answerType" : {
+                    "baseType" : "string",
+                    "type" : "array"
+                  },
+                  "endDate" : "2017-10-16T22:28:09.000-07:00",
+                  "identifier" : "question8",
+                  "startDate" : "2017-10-16T22:28:09.000-07:00",
+                  "type" : "answer",
+                  "value" : [
+                    "foo",
+                    "ba",
+                    "lalala"
+                  ]
+                },
+                {
+                  "answerType" : {
+                    "codingFormat" : "yyyy-MM",
+                    "type" : "date-time"
+                  },
+                  "endDate" : "2017-10-16T22:28:09.000-07:00",
+                  "identifier" : "question9",
+                  "startDate" : "2017-10-16T22:28:09.000-07:00",
+                  "type" : "answer",
+                  "value" : "2020-04"
+                },
+                {
+                  "answerType" : {
+                    "codingFormat" : "HH:mm",
+                    "type" : "date-time"
+                  },
+                  "endDate" : "2017-10-16T22:28:09.000-07:00",
+                  "identifier" : "question10",
+                  "startDate" : "2017-10-16T22:28:09.000-07:00",
+                  "type" : "answer",
+                  "value" : "08:30"
+                },
+                {
+                  "answerType" : {
+                    "codingFormat" : "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ",
+                    "type" : "date-time"
+                  },
+                  "endDate" : "2017-10-16T22:28:09.000-07:00",
+                  "identifier" : "question11",
+                  "startDate" : "2017-10-16T22:28:09.000-07:00",
+                  "type" : "answer",
+                  "value" : "2017-10-16T22:28:09.000-07:00"
+                },
+                {
+                  "answerType" : {
+                    "codingFormat" : "HH:mm:ss.SSS",
+                    "type" : "time"
+                  },
+                  "endDate" : "2017-10-16T22:28:09.000-07:00",
+                  "identifier" : "question12",
+                  "startDate" : "2017-10-16T22:28:09.000-07:00",
+                  "type" : "answer",
+                  "value" : "22:28:00.000"
+                },
+                {
+                  "answerType" : {
+                    "displayUnits" : [
+                      "hour",
+                      "minute"
+                    ],
+                    "significantDigits" : 0,
+                    "type" : "duration"
+                  },
+                  "endDate" : "2017-10-16T22:28:09.000-07:00",
+                  "identifier" : "question13",
+                  "startDate" : "2017-10-16T22:28:09.000-07:00",
+                  "type" : "answer",
+                  "value" : 75
+                },
+                {
+                  "answerType" : {
+                    "type" : "measurement",
+                    "unit" : "cm"
+                  },
+                  "endDate" : "2017-10-16T22:28:09.000-07:00",
+                  "identifier" : "question14",
+                  "startDate" : "2017-10-16T22:28:09.000-07:00",
+                  "type" : "answer",
+                  "value" : 170.2
+                }
+              ],
+              "endDate" : "2017-10-16T22:30:29.000-07:00",
+              "identifier" : "answers",
+              "startDate" : "2017-10-16T22:28:29.000-07:00",
+              "type" : "collection"
+            },
+            {
+              "endDate" : "2017-10-16T22:30:49.000-07:00",
+              "identifier" : "conclusion",
+              "startDate" : "2017-10-16T22:30:29.000-07:00",
+              "type" : "base"
+            }
+          ],
+          "asyncResults" : [
+            {
+              "contentType" : "application/json",
+              "endDate" : "2017-10-16T22:30:29.000-07:00",
+              "identifier" : "fileResult",
+              "jsonSchema" : "file://temp/foo.schema.json",
+              "relativePath" : "/foo.json",
+              "startDate" : "2017-10-16T22:28:29.000-07:00",
+              "startUptime" : 1234.567,
+              "type" : "file"
+            }
+          ],
+          "path" : [
+            {
+              "direction" : "forward",
+              "identifier" : "introduction"
+            },
+            {
+              "direction" : "forward",
+              "identifier" : "answers"
+            },
+            {
+              "direction" : "forward",
+              "identifier" : "conclusion"
+            }
+          ]
+        }
+      ]
+    },
+    "CollectionResultObject" : {
+      "$id" : "#CollectionResultObject",
+      "type" : "object",
+      "title" : "CollectionResultObject",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "collection"
+        },
+        "children" : {
+          "type" : "array",
+          "description" : "The list of input results associated with this step or recorder.",
+          "items" : {
+            "$ref" : "#"
+          }
+        }
+      },
+      "required" : [
+        "type",
+        "children"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "collection",
+          "identifier" : "answers",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:33:09.000-07:00",
+          "children" : [
+            {
+              "answerType" : {
+                "type" : "boolean"
+              },
+              "endDate" : "2017-10-16T22:28:09.000-07:00",
+              "identifier" : "question1",
+              "startDate" : "2017-10-16T22:28:09.000-07:00",
+              "type" : "answer",
+              "value" : true
+            },
+            {
+              "answerType" : {
+                "type" : "integer"
+              },
+              "endDate" : "2017-10-16T22:28:09.000-07:00",
+              "identifier" : "question2",
+              "startDate" : "2017-10-16T22:28:09.000-07:00",
+              "type" : "answer",
+              "value" : 42
+            },
+            {
+              "answerType" : {
+                "type" : "number"
+              },
+              "endDate" : "2017-10-16T22:28:09.000-07:00",
+              "identifier" : "question3",
+              "startDate" : "2017-10-16T22:28:09.000-07:00",
+              "type" : "answer",
+              "value" : 3.14
+            },
+            {
+              "answerType" : {
+                "type" : "object"
+              },
+              "endDate" : "2017-10-16T22:28:09.000-07:00",
+              "identifier" : "question4",
+              "startDate" : "2017-10-16T22:28:09.000-07:00",
+              "type" : "answer",
+              "value" : {
+                "foo" : "ba"
+              }
+            },
+            {
+              "answerType" : {
+                "type" : "string"
+              },
+              "endDate" : "2017-10-16T22:28:09.000-07:00",
+              "identifier" : "question5",
+              "startDate" : "2017-10-16T22:28:09.000-07:00",
+              "type" : "answer",
+              "value" : "foo"
+            },
+            {
+              "answerType" : {
+                "baseType" : "number",
+                "type" : "array"
+              },
+              "endDate" : "2017-10-16T22:28:09.000-07:00",
+              "identifier" : "question6",
+              "startDate" : "2017-10-16T22:28:09.000-07:00",
+              "type" : "answer",
+              "value" : [
+                3.2,
+                5.1
+              ]
+            },
+            {
+              "answerType" : {
+                "baseType" : "integer",
+                "type" : "array"
+              },
+              "endDate" : "2017-10-16T22:28:09.000-07:00",
+              "identifier" : "question7",
+              "startDate" : "2017-10-16T22:28:09.000-07:00",
+              "type" : "answer",
+              "value" : [
+                1,
+                5
+              ]
+            },
+            {
+              "answerType" : {
+                "baseType" : "string",
+                "type" : "array"
+              },
+              "endDate" : "2017-10-16T22:28:09.000-07:00",
+              "identifier" : "question8",
+              "startDate" : "2017-10-16T22:28:09.000-07:00",
+              "type" : "answer",
+              "value" : [
+                "foo",
+                "ba",
+                "lalala"
+              ]
+            },
+            {
+              "answerType" : {
+                "codingFormat" : "yyyy-MM",
+                "type" : "date-time"
+              },
+              "endDate" : "2017-10-16T22:28:09.000-07:00",
+              "identifier" : "question9",
+              "startDate" : "2017-10-16T22:28:09.000-07:00",
+              "type" : "answer",
+              "value" : "2020-04"
+            },
+            {
+              "answerType" : {
+                "codingFormat" : "HH:mm",
+                "type" : "date-time"
+              },
+              "endDate" : "2017-10-16T22:28:09.000-07:00",
+              "identifier" : "question10",
+              "startDate" : "2017-10-16T22:28:09.000-07:00",
+              "type" : "answer",
+              "value" : "08:30"
+            },
+            {
+              "answerType" : {
+                "codingFormat" : "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ",
+                "type" : "date-time"
+              },
+              "endDate" : "2017-10-16T22:28:09.000-07:00",
+              "identifier" : "question11",
+              "startDate" : "2017-10-16T22:28:09.000-07:00",
+              "type" : "answer",
+              "value" : "2017-10-16T22:28:09.000-07:00"
+            },
+            {
+              "answerType" : {
+                "codingFormat" : "HH:mm:ss.SSS",
+                "type" : "time"
+              },
+              "endDate" : "2017-10-16T22:28:09.000-07:00",
+              "identifier" : "question12",
+              "startDate" : "2017-10-16T22:28:09.000-07:00",
+              "type" : "answer",
+              "value" : "22:28:00.000"
+            },
+            {
+              "answerType" : {
+                "displayUnits" : [
+                  "hour",
+                  "minute"
+                ],
+                "significantDigits" : 0,
+                "type" : "duration"
+              },
+              "endDate" : "2017-10-16T22:28:09.000-07:00",
+              "identifier" : "question13",
+              "startDate" : "2017-10-16T22:28:09.000-07:00",
+              "type" : "answer",
+              "value" : 75
+            },
+            {
+              "answerType" : {
+                "type" : "measurement",
+                "unit" : "cm"
+              },
+              "endDate" : "2017-10-16T22:28:09.000-07:00",
+              "identifier" : "question14",
+              "startDate" : "2017-10-16T22:28:09.000-07:00",
+              "type" : "answer",
+              "value" : 170.2
+            }
+          ]
+        }
+      ]
+    },
+    "ResultObject" : {
+      "$id" : "#ResultObject",
+      "type" : "object",
+      "title" : "ResultObject",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "base"
+        }
+      },
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "base",
+          "identifier" : "step1",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:33:09.000-07:00"
+        }
+      ]
+    },
+    "SerializableResultType" : {
+      "$id" : "#SerializableResultType",
+      "type" : "string",
+      "title" : "SerializableResultType",
+      "description" : "",
+      "examples" : [
+        "answer",
+        "assessment",
+        "base",
+        "collection",
+        "error",
+        "file",
+        "section"
+      ]
+    }
+  },
+  "properties" : {
+    "type" : {
+      "$ref" : "#/definitions/SerializableResultType"
+    },
+    "identifier" : {
+      "type" : "string",
+      "description" : "The identifier for the result."
+    },
+    "startDate" : {
+      "type" : "string",
+      "description" : "The start date timestamp for the result.",
+      "format" : "date-time"
+    },
+    "endDate" : {
+      "type" : "string",
+      "description" : "The end date timestamp for the result.",
+      "format" : "date-time"
+    }
+  },
+  "required" : [
+    "type",
+    "identifier",
+    "startDate"
+  ]
+}

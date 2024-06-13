@@ -2,7 +2,9 @@ import Foundation
 import JsonModel
 import AssessmentModel
 import ResultModel
-import MotorControl
+import KeyLogger
+import BiAffectSDK
+import MobilePassiveData
 
 func runMain() {
     let factory = GeneratorFactory()
@@ -19,10 +21,16 @@ class GeneratorFactory : AssessmentFactory {
     required init() {
         super.init()
         
-        // manually add the tapping result object to the result serializer.
-        self.resultSerializer.add(TappingResultObject())
+        // manually add the biaffect schemas to the serializer
+        self.resultSerializer.add(BiAffectSDK.GoNoGoResultObject())
+        self.resultSerializer.add(BiAffectSDK.TrailmakingResultObject())
         
-        self.registerRootObject(ArchiveMetadata())
+        // manually add the root objects for the keyboard session and metadata.json files
+        self.registerRootObject(ResultModel.ArchiveMetadata())
+        self.registerRootObject(KeyLogger.Session())
+        self.registerRootObject(DocumentableRootArray(rootDocumentType: MotionRecord.self,
+                                                      jsonSchema: .init(string: "\(MotionRecord.self).json", relativeTo: kBaseJsonSchemaURL)!,
+                                                      documentDescription: "A list of motion sensor records."))
     }
     
     func buildJson() throws {

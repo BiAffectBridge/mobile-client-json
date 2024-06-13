@@ -3,47 +3,38 @@
     "pins": [
       {
         "package": "AssessmentModel",
-        "repositoryURL": "https://github.com/Sage-Bionetworks/AssessmentModelKMM.git",
+        "repositoryURL": "https://github.com/BiAffectBridge/AssessmentModel-Swift.git",
         "state": {
           "branch": null,
-          "revision": "0bd38c1530381ee7dd6492c7265304af020de73d",
-          "version": "0.11.2"
+          "revision": "8f085a7fe1b53d8feeea54accf1ceb3b43f1ba84",
+          "version": "1.2.0"
         }
       },
       {
         "package": "JsonModel",
-        "repositoryURL": "https://github.com/Sage-Bionetworks/JsonModel-Swift.git",
+        "repositoryURL": "https://github.com/BiAffectBridge/JsonModel-Swift.git",
         "state": {
           "branch": null,
-          "revision": "3274a1192148b9652885d4a6baa50462ae9842b8",
-          "version": "2.2.2"
+          "revision": "6906a744d80481128bd88471890ec38eeda1bd76",
+          "version": "2.5.0"
         }
       },
       {
         "package": "MobilePassiveData",
-        "repositoryURL": "https://github.com/Sage-Bionetworks/MobilePassiveData-SDK.git",
+        "repositoryURL": "https://github.com/BiAffectBridge/MobilePassiveData-SDK.git",
         "state": {
           "branch": null,
-          "revision": "4a60eae2182fc1b69e205854d4fbad0e9b123a6c",
-          "version": "1.5.3"
+          "revision": "a766738b422ae2f0a894b63bf823f252b3c1545e",
+          "version": "1.6.0"
         }
       },
       {
-        "package": "MotorControl",
-        "repositoryURL": "https://github.com/Sage-Bionetworks/MotorControl-iOS.git",
+        "package": "SQLite.swift",
+        "repositoryURL": "https://github.com/stephencelis/SQLite.swift",
         "state": {
           "branch": null,
-          "revision": "7eb00e8683b03d3d73bee3926c140ad16f17d8f9",
-          "version": "5.0.0"
-        }
-      },
-      {
-        "package": "SharedMobileUI",
-        "repositoryURL": "https://github.com/Sage-Bionetworks/SharedMobileUI-AppleOS.git",
-        "state": {
-          "branch": null,
-          "revision": "16b8b57e1b2d2e2746dd8f55ca620f1d25dc8855",
-          "version": "0.19.1"
+          "revision": "a95fc6df17d108bd99210db5e8a9bac90fe984b8",
+          "version": "0.15.3"
         }
       }
     ]

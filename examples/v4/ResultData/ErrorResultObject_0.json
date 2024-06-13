@@ -1,0 +1,8 @@
+{
+  "errorCode" : 1,
+  "errorDescription" : "example error",
+  "errorDomain" : "ExampleDomain",
+  "identifier" : "errorResult",
+  "startDate" : "2024-06-13T11:34:16.588-07:00",
+  "type" : "error"
+}

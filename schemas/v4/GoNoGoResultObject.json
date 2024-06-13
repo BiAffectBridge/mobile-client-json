@@ -1,0 +1,109 @@
+{
+  "$id" : "https://biaffectbridge.github.io/mobile-client-json/schemas/v4/GoNoGoResultObject.json",
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "title" : "GoNoGoResultObject",
+  "description" : "",
+  "definitions" : {
+    "ErrorResultObject" : {
+      "$id" : "#ErrorResultObject",
+      "type" : "object",
+      "title" : "ErrorResultObject",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "error"
+        },
+        "identifier" : {
+          "type" : "string"
+        },
+        "startDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "endDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "errorDescription" : {
+          "type" : "string",
+          "description" : "The description of the error."
+        },
+        "errorDomain" : {
+          "type" : "string",
+          "description" : "The error domain."
+        },
+        "errorCode" : {
+          "type" : "integer",
+          "description" : "The error code."
+        }
+      },
+      "required" : [
+        "type",
+        "identifier",
+        "startDate",
+        "endDate",
+        "errorDescription",
+        "errorDomain",
+        "errorCode"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "ResultData.json"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "error",
+          "identifier" : "errorResult",
+          "startDate" : "2024-06-13T11:39:36.461-07:00",
+          "errorDescription" : "example error",
+          "errorDomain" : "ExampleDomain",
+          "errorCode" : 1
+        }
+      ]
+    }
+  },
+  "properties" : {
+    "type" : {
+      "const" : "gonogo"
+    },
+    "$schema" : {
+      "type" : "string"
+    },
+    "startUptime" : {
+      "type" : "number",
+      "description" : "The system clock uptime when the recorder was started."
+    },
+    "results" : {
+      "type" : "array",
+      "description" : "The list of motion samples for this run of the test.",
+      "items" : {
+        "$ref" : "TrailmakingResultObject.json#Response"
+      }
+    },
+    "motionError" : {
+      "$ref" : "#/definitions/ErrorResultObject",
+      "description" : "The error returned when failed to use the motion sensors."
+    }
+  },
+  "required" : [
+    "type"
+  ],
+  "allOf" : [
+    {
+      "$ref" : "ResultData.json"
+    }
+  ],
+  "examples" : [
+    {
+      "type" : "gonogo",
+      "identifier" : "gonogo",
+      "$schema" : "https://biaffectbridge.github.io/mobile-client-json/schemas/v4/GoNoGoResultObject.json",
+      "startDate" : "2024-06-13T11:39:36.462-07:00",
+      "results" : [
+
+      ]
+    }
+  ]
+}

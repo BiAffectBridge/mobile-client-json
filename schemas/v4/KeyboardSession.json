@@ -1,0 +1,248 @@
+{
+  "$id" : "https://biaffectbridge.github.io/mobile-client-json/schemas/v4/KeyboardSession.json",
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "title" : "KeyboardSession",
+  "description" : "A serializable state object used to track keyboard sesson state.",
+  "definitions" : {
+    "FileResultObject" : {
+      "$id" : "#FileResultObject",
+      "type" : "object",
+      "title" : "FileResultObject",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "file"
+        },
+        "identifier" : {
+          "type" : "string"
+        },
+        "startDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "endDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "relativePath" : {
+          "type" : "string",
+          "description" : "The relative path to the file-based result.",
+          "format" : "uri-reference"
+        },
+        "contentType" : {
+          "type" : "string",
+          "description" : "The MIME content type of the result."
+        },
+        "startUptime" : {
+          "type" : "number",
+          "description" : "The system clock uptime when the recorder was started (if applicable)."
+        },
+        "jsonSchema" : {
+          "type" : "string",
+          "description" : "The URL for the json schema of the JSON for this file.",
+          "format" : "uri"
+        }
+      },
+      "required" : [
+        "type",
+        "identifier"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "ResultData.json"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "file",
+          "identifier" : "fileResult",
+          "startDate" : "2017-10-16T22:28:09.000-07:00",
+          "endDate" : "2017-10-16T22:33:09.000-07:00",
+          "relativePath" : "/foo.json",
+          "contentType" : "application/json",
+          "startUptime" : 1234.567,
+          "jsonSchema" : "file://temp/foo.schema.json"
+        }
+      ]
+    },
+    "Force" : {
+      "$id" : "#Force",
+      "type" : "object",
+      "title" : "Force",
+      "description" : "",
+      "properties" : {
+        "value" : {
+          "type" : "number",
+          "description" : "Actual force sensed as conventional value."
+        },
+        "max" : {
+          "type" : "number",
+          "description" : "Maximum possible force that can be sensed by the sensor."
+        }
+      },
+      "required" : [
+        "value",
+        "max"
+      ],
+      "examples" : [
+        {
+          "value" : 0.123,
+          "max" : 1
+        }
+      ]
+    },
+    "Keylog" : {
+      "$id" : "#Keylog",
+      "type" : "object",
+      "title" : "Keylog",
+      "description" : "",
+      "properties" : {
+        "uptime" : {
+          "type" : "number",
+          "description" : "System Clock. The processor system uptime used as a timestamp for motion records."
+        },
+        "timestamp" : {
+          "type" : "number",
+          "description" : "Time interval (in seconds) since 1970."
+        },
+        "value" : {
+          "$ref" : "#/definitions/KeyType",
+          "description" : "Type of the key pressed."
+        },
+        "duration" : {
+          "type" : "number",
+          "description" : "Residence Time. Time interval the finger is kept on the key."
+        },
+        "distanceFromPrevious" : {
+          "type" : "number",
+          "description" : "Distance (in universal size called gridpoint which is independent of screen resolutions) of touch from the previous KeyLog touch position."
+        },
+        "distanceFromCenter" : {
+          "type" : "number",
+          "description" : "Distance (in universal size called gridpoint which is independent of screen resolutions) of touch from key center."
+        },
+        "force" : {
+          "$ref" : "#/definitions/Force",
+          "description" : "Force of touch."
+        },
+        "radius" : {
+          "$ref" : "#/definitions/Radius",
+          "description" : "Radius of touch."
+        }
+      },
+      "required" : [
+        "uptime",
+        "timestamp",
+        "value"
+      ],
+      "examples" : [
+        {
+          "uptime" : 506933.147669463,
+          "timestamp" : 1718303976.4377751,
+          "value" : "alphabet"
+        }
+      ]
+    },
+    "KeyType" : {
+      "$id" : "#KeyType",
+      "type" : "string",
+      "title" : "KeyType",
+      "description" : "",
+      "enum" : [
+        "alphabet",
+        "numeral",
+        "punctuation",
+        "symbol",
+        "emoji",
+        "backspace",
+        "space",
+        "suggestion",
+        "autocorrection",
+        "@",
+        "#",
+        "other"
+      ]
+    },
+    "Radius" : {
+      "$id" : "#Radius",
+      "type" : "object",
+      "title" : "Radius",
+      "description" : "",
+      "properties" : {
+        "value" : {
+          "type" : "number",
+          "description" : "Actual radius of the touch surface (in universal size called gridpoint which is independent of screen resolutions)."
+        },
+        "tolerance" : {
+          "type" : "number",
+          "description" : "Standard deviation."
+        }
+      },
+      "required" : [
+        "value",
+        "tolerance"
+      ],
+      "examples" : [
+        {
+          "value" : 0.123,
+          "tolerance" : 0.001
+        }
+      ]
+    }
+  },
+  "properties" : {
+    "uptime" : {
+      "type" : "number",
+      "description" : "System Clock. The processor system uptime used as a timestamp for motion records."
+    },
+    "timestamp" : {
+      "type" : "number",
+      "description" : "Time interval (in seconds) since 1970."
+    },
+    "$schema" : {
+      "type" : "string",
+      "description" : "The JSON schema URI"
+    },
+    "duration" : {
+      "type" : "number",
+      "description" : "The duration of the session"
+    },
+    "keylogs" : {
+      "type" : "array",
+      "description" : "The keys typed during this session",
+      "items" : {
+        "$ref" : "#/definitions/Keylog"
+      }
+    },
+    "associatedFiles" : {
+      "type" : "array",
+      "description" : "The manifest of files associated with this session",
+      "items" : {
+        "$ref" : "#/definitions/FileResultObject"
+      }
+    }
+  },
+  "required" : [
+    "uptime",
+    "timestamp",
+    "$schema",
+    "duration",
+    "keylogs"
+  ],
+  "examples" : [
+    {
+      "uptime" : 506933.1494999271,
+      "timestamp" : 1718303976.439606,
+      "$schema" : "https://biaffectbridge.github.io/mobile-client-json/schemas/v4/KeyboardSession.json",
+      "duration" : 0,
+      "keylogs" : [
+        {
+          "timestamp" : 1718303976.439606,
+          "uptime" : 506933.1494999271,
+          "value" : "alphabet"
+        }
+      ]
+    }
+  ]
+}

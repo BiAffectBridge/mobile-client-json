@@ -1,0 +1,9 @@
+{
+  "$schema" : "https://biaffectbridge.github.io/mobile-client-json/schemas/v4/GoNoGoResultObject.json",
+  "identifier" : "gonogo",
+  "results" : [
+
+  ],
+  "startDate" : "2024-06-13T11:39:36.462-07:00",
+  "type" : "gonogo"
+}

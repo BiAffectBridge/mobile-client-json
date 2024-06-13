@@ -10,40 +10,30 @@ jobs:
       - name: Validate JSON ArchiveMetadata
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
-          INPUT_SCHEMA: //schemas/v2/ArchiveMetadata.json
-          INPUT_JSONS: //examples/v2/ArchiveMetadata/ArchiveMetadata_0.json
-      - name: Validate JSON AssessmentObject
-        uses: docker://orrosenblatt/validate-json-action:latest
-        env:
-          INPUT_SCHEMA: //schemas/v2/AssessmentObject.json
-          INPUT_JSONS: //examples/v2/AssessmentObject/AssessmentObject_0.json
+          INPUT_SCHEMA: //schemas/v4/ArchiveMetadata.json
+          INPUT_JSONS: //examples/v4/ArchiveMetadata/ArchiveMetadata_0.json
       - name: Validate JSON AssessmentResultObject
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
-          INPUT_SCHEMA: //schemas/v2/AssessmentResultObject.json
-          INPUT_JSONS: //examples/v2/AssessmentResultObject/AssessmentResultObject_0.json
-      - name: Validate JSON AudioLevelRecord
+          INPUT_SCHEMA: //schemas/v4/AssessmentResultObject.json
+          INPUT_JSONS: //examples/v4/AssessmentResultObject/AssessmentResultObject_0.json
+      - name: Validate JSON GoNoGoResultObject
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
-          INPUT_SCHEMA: //schemas/v2/AudioLevelRecord.json
-          INPUT_JSONS: //examples/v2/AudioLevelRecord/AudioLevelRecord_0.json
-      - name: Validate JSON DistanceRecord
+          INPUT_SCHEMA: //schemas/v4/GoNoGoResultObject.json
+          INPUT_JSONS: //examples/v4/GoNoGoResultObject/GoNoGoResultObject_0.json
+      - name: Validate JSON KeyboardSession
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
-          INPUT_SCHEMA: //schemas/v2/DistanceRecord.json
-          INPUT_JSONS: //examples/v2/DistanceRecord/DistanceRecord_0.json
+          INPUT_SCHEMA: //schemas/v4/KeyboardSession.json
+          INPUT_JSONS: //examples/v4/KeyboardSession/KeyboardSession_0.json
       - name: Validate JSON MotionRecord
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
-          INPUT_SCHEMA: //schemas/v2/MotionRecord.json
-          INPUT_JSONS: //examples/v2/MotionRecord/MotionRecord_0.json
-      - name: Validate JSON TappingResultObject
+          INPUT_SCHEMA: //schemas/v4/MotionRecord.json
+          INPUT_JSONS: //examples/v4/MotionRecord/MotionRecord_0.json
+      - name: Validate JSON TrailmakingResultObject
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
-          INPUT_SCHEMA: //schemas/v2/TappingResultObject.json
-          INPUT_JSONS: //examples/v2/TappingResultObject/TappingResultObject_0.json
-      - name: Validate JSON WeatherResult
-        uses: docker://orrosenblatt/validate-json-action:latest
-        env:
-          INPUT_SCHEMA: //schemas/v2/WeatherResult.json
-          INPUT_JSONS: //examples/v2/WeatherResult/WeatherResult_0.json
+          INPUT_SCHEMA: //schemas/v4/TrailmakingResultObject.json
+          INPUT_JSONS: //examples/v4/TrailmakingResultObject/TrailmakingResultObject_0.json

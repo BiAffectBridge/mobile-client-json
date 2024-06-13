@@ -1,0 +1,19 @@
+{
+  "appName" : "???",
+  "appVersion" : "???",
+  "deviceInfo" : "Mac Version 14.2.1 (Build 23C71)",
+  "deviceTypeIdentifier" : "Mac",
+  "files" : [
+    {
+      "contentType" : "application/json",
+      "filename" : "foo.json",
+      "identifier" : "foo",
+      "jsonSchema" : "https://example.com/foo.json",
+      "metadata" : {
+        "foo" : "baroo"
+      },
+      "stepPath" : "Goo/foo",
+      "timestamp" : "2017-10-16T22:28:09.000-07:00"
+    }
+  ]
+}

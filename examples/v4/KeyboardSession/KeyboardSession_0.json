@@ -1,0 +1,13 @@
+{
+  "$schema" : "https://biaffectbridge.github.io/mobile-client-json/schemas/v4/KeyboardSession.json",
+  "duration" : 0,
+  "keylogs" : [
+    {
+      "timestamp" : 1718303976.439606,
+      "uptime" : 506933.14949992712,
+      "value" : "alphabet"
+    }
+  ],
+  "timestamp" : 1718303976.439606,
+  "uptime" : 506933.14949992712
+}
