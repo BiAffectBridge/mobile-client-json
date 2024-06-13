@@ -3,6 +3,34 @@
   "$schema" : "http://json-schema.org/draft-07/schema#",
   "type" : "array",
   "description" : "An array of `MotionRecord` objects.",
+  "definitions" : {
+    "AttitudeReferenceFrame" : {
+      "$id" : "#AttitudeReferenceFrame",
+      "type" : "string",
+      "title" : "AttitudeReferenceFrame",
+      "description" : "",
+      "enum" : [
+        "Z-Up",
+        "North-West-Up"
+      ]
+    },
+    "MotionRecorderType" : {
+      "$id" : "#MotionRecorderType",
+      "type" : "string",
+      "title" : "MotionRecorderType",
+      "description" : "",
+      "enum" : [
+        "accelerometer",
+        "gyro",
+        "magnetometer",
+        "attitude",
+        "gravity",
+        "magneticField",
+        "rotationRate",
+        "userAcceleration"
+      ]
+    }
+  },
   "items" : {
     "type" : "object",
     "title" : "MotionRecord",
@@ -14,11 +42,11 @@
       },
       "timestamp" : {
         "type" : "number",
-        "description" : "Time that the system has been awake since last reboot."
+        "description" : "Duration (in seconds) from when the recording was started."
       },
       "stepPath" : {
         "type" : "string",
-        "description" : "An identifier marking the current step."
+        "description" : "An identifier marking the current step (or response timing)."
       },
       "timestampDate" : {
         "type" : "string",
@@ -26,7 +54,7 @@
         "format" : "date-time"
       },
       "sensorType" : {
-        "$ref" : "https://sage-bionetworks.github.io/mobile-client-json/schemas/v2/MotionRecord.json#MotionRecorderType",
+        "$ref" : "#/definitions/MotionRecorderType",
         "description" : "The sensor type for this record sample."
       },
       "eventAccuracy" : {
@@ -34,7 +62,7 @@
         "description" : "A number marking the sensor accuracy of the magnetic field sensor."
       },
       "referenceCoordinate" : {
-        "$ref" : "https://sage-bionetworks.github.io/mobile-client-json/schemas/v2/MotionRecord.json#AttitudeReferenceFrame",
+        "$ref" : "#/definitions/AttitudeReferenceFrame",
         "description" : "Used for an `attitude` record type to describe the reference frame."
       },
       "heading" : {
@@ -60,7 +88,7 @@
     },
     "examples" : [
       {
-        "uptime" : 701979.762142583,
+        "uptime" : 706474.678238833,
         "timestamp" : 0,
         "stepPath" : "step1",
         "sensorType" : "gyro",
@@ -69,7 +97,7 @@
         "z" : -0.9501953125
       },
       {
-        "uptime" : 701979.762142583,
+        "uptime" : 706474.678238833,
         "timestamp" : 0,
         "stepPath" : "step1",
         "sensorType" : "accelerometer",
@@ -78,7 +106,7 @@
         "z" : -0.9501953125
       },
       {
-        "uptime" : 701979.762142583,
+        "uptime" : 706474.678238833,
         "timestamp" : 0,
         "stepPath" : "step1",
         "sensorType" : "magnetometer",
@@ -87,7 +115,7 @@
         "z" : -0.9501953125
       },
       {
-        "uptime" : 701979.762142583,
+        "uptime" : 706474.678238833,
         "timestamp" : 0,
         "stepPath" : "step1",
         "sensorType" : "gravity",
@@ -96,7 +124,7 @@
         "z" : -0.9501953125
       },
       {
-        "uptime" : 701979.762142583,
+        "uptime" : 706474.678238833,
         "timestamp" : 0,
         "stepPath" : "step1",
         "sensorType" : "userAcceleration",
@@ -105,7 +133,7 @@
         "z" : -0.9501953125
       },
       {
-        "uptime" : 701979.762142583,
+        "uptime" : 706474.678238833,
         "timestamp" : 0,
         "stepPath" : "step1",
         "sensorType" : "userAcceleration",
@@ -114,7 +142,7 @@
         "z" : -0.9501953125
       },
       {
-        "uptime" : 701979.762142583,
+        "uptime" : 706474.678238833,
         "timestamp" : 0,
         "stepPath" : "step1",
         "sensorType" : "attitude",
@@ -125,7 +153,7 @@
         "w" : 1
       },
       {
-        "uptime" : 701979.762142583,
+        "uptime" : 706474.678238833,
         "timestamp" : 0,
         "stepPath" : "step1",
         "sensorType" : "magneticField",

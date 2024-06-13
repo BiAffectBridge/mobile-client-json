@@ -138,8 +138,8 @@
       ],
       "examples" : [
         {
-          "uptime" : 506933.147669463,
-          "timestamp" : 1718303976.4377751,
+          "uptime" : 511428.0640005568,
+          "timestamp" : 1718308471.317721,
           "value" : "alphabet"
         }
       ]
@@ -232,14 +232,14 @@
   ],
   "examples" : [
     {
-      "uptime" : 506933.1494999271,
-      "timestamp" : 1718303976.439606,
+      "uptime" : 511428.0655749214,
+      "timestamp" : 1718308471.319296,
       "$schema" : "https://biaffectbridge.github.io/mobile-client-json/schemas/v4/KeyboardSession.json",
       "duration" : 0,
       "keylogs" : [
         {
-          "timestamp" : 1718303976.439606,
-          "uptime" : 506933.1494999271,
+          "timestamp" : 1718308471.319296,
+          "uptime" : 511428.0655749214,
           "value" : "alphabet"
         }
       ]

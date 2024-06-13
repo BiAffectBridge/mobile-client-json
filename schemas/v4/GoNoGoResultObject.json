@@ -56,7 +56,7 @@
         {
           "type" : "error",
           "identifier" : "errorResult",
-          "startDate" : "2024-06-13T11:39:36.461-07:00",
+          "startDate" : "2024-06-13T12:54:31.345-07:00",
           "errorDescription" : "example error",
           "errorDomain" : "ExampleDomain",
           "errorCode" : 1
@@ -100,7 +100,7 @@
       "type" : "gonogo",
       "identifier" : "gonogo",
       "$schema" : "https://biaffectbridge.github.io/mobile-client-json/schemas/v4/GoNoGoResultObject.json",
-      "startDate" : "2024-06-13T11:39:36.462-07:00",
+      "startDate" : "2024-06-13T12:54:31.346-07:00",
       "results" : [
 
       ]

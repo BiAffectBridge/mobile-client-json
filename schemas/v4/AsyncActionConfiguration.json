@@ -1,0 +1,196 @@
+{
+  "$id" : "https://biaffectbridge.github.io/mobile-client-json/schemas/v4/AsyncActionConfiguration.json",
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "title" : "AsyncActionConfiguration",
+  "description" : "`AsyncActionConfiguration` defines general configuration for an asynchronous action that should be run in the background. Depending upon the parameters and how the action is set up, this could be something that is run continuously or else is paused or reset based on a timeout interval.",
+  "definitions" : {
+    "AsyncActionType" : {
+      "$id" : "#AsyncActionType",
+      "type" : "string",
+      "title" : "AsyncActionType",
+      "description" : "",
+      "examples" : [
+        "motion",
+        "weather"
+      ]
+    },
+    "MotionRecorderConfigurationObject" : {
+      "$id" : "#MotionRecorderConfigurationObject",
+      "type" : "object",
+      "title" : "MotionRecorderConfigurationObject",
+      "description" : "",
+      "properties" : {
+        "identifier" : {
+          "type" : "string",
+          "description" : "A short string that uniquely identifies the asynchronous action within the task."
+        },
+        "type" : {
+          "const" : "motion"
+        },
+        "recorderTypes" : {
+          "type" : "array",
+          "description" : "The motion sensor types to include with this configuration.",
+          "items" : {
+            "$ref" : "MotionRecord.json#MotionRecorderType"
+          }
+        },
+        "startStepIdentifier" : {
+          "type" : "string"
+        },
+        "stopStepIdentifier" : {
+          "type" : "string"
+        },
+        "frequency" : {
+          "type" : "number",
+          "description" : "The sampling frequency of the motion sensors.",
+          "default" : 100
+        },
+        "requiresBackgroundAudio" : {
+          "type" : "boolean",
+          "description" : "Whether or not the recorder requires background audio.",
+          "default" : false
+        },
+        "usesCSVEncoding" : {
+          "type" : "boolean",
+          "description" : "Should samples be encoded as a CSV file?",
+          "default" : false
+        },
+        "shouldDeletePrevious" : {
+          "type" : "boolean",
+          "description" : "Should the file used in a previous run of a recording be deleted?",
+          "default" : true
+        }
+      },
+      "required" : [
+        "identifier",
+        "type"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "identifier" : "exampleA",
+          "type" : "motion",
+          "requiresBackgroundAudio" : false
+        },
+        {
+          "identifier" : "exampleB",
+          "type" : "motion",
+          "recorderTypes" : [
+            "gravity",
+            "gyro"
+          ],
+          "frequency" : 200,
+          "requiresBackgroundAudio" : true,
+          "usesCSVEncoding" : true,
+          "shouldDeletePrevious" : false
+        }
+      ]
+    },
+    "WeatherConfigurationObject" : {
+      "$id" : "#WeatherConfigurationObject",
+      "type" : "object",
+      "title" : "WeatherConfigurationObject",
+      "description" : "",
+      "properties" : {
+        "type" : {
+          "const" : "weather"
+        },
+        "identifier" : {
+          "type" : "string",
+          "description" : "Identifier for the weather services."
+        },
+        "startStepIdentifier" : {
+          "type" : "string",
+          "description" : "Identifier for the step (if any) that should be used for starting services."
+        },
+        "services" : {
+          "type" : "array",
+          "description" : "The configuration for each of the weather services used by this recorder.",
+          "items" : {
+            "$ref" : "#/definitions/WeatherServiceConfigurationObject"
+          }
+        }
+      },
+      "required" : [
+        "type",
+        "identifier",
+        "startStepIdentifier",
+        "services"
+      ],
+      "allOf" : [
+        {
+          "$ref" : "#"
+        }
+      ],
+      "examples" : [
+        {
+          "type" : "weather",
+          "identifier" : "weather",
+          "startStepIdentifier" : "countdown",
+          "services" : [
+            {
+              "identifier" : "weather",
+              "key" : "ABCD",
+              "provider" : "openWeather"
+            },
+            {
+              "identifier" : "airQuality",
+              "key" : "ABCD",
+              "provider" : "airNow"
+            }
+          ]
+        }
+      ]
+    },
+    "WeatherServiceConfigurationObject" : {
+      "$id" : "#WeatherServiceConfigurationObject",
+      "type" : "object",
+      "title" : "WeatherServiceConfigurationObject",
+      "description" : "",
+      "properties" : {
+        "identifier" : {
+          "type" : "string",
+          "description" : "Identifier for the service (weather or air quality)"
+        },
+        "key" : {
+          "type" : "string",
+          "description" : "The API key to use when accessing the service."
+        },
+        "provider" : {
+          "type" : "string",
+          "description" : "Name of service provider. For example, openWeather"
+        }
+      },
+      "required" : [
+        "identifier",
+        "key",
+        "provider"
+      ],
+      "examples" : [
+        {
+          "identifier" : "weather",
+          "key" : "ABCD",
+          "provider" : "openWeather"
+        },
+        {
+          "identifier" : "airQuality",
+          "key" : "ABCD",
+          "provider" : "airNow"
+        }
+      ]
+    }
+  },
+  "properties" : {
+    "type" : {
+      "type" : "string"
+    }
+  },
+  "required" : [
+    "type"
+  ]
+}
